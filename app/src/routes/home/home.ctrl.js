@@ -1,16 +1,40 @@
-function home (req,res){
-    res.render("home/index");
-}
-
-function login(req, res) { 
-    res.render("home/login")       
-}
-
-// 그냥 객체로 만들어서 보내준것이다. 
-module.exports = {
-    home , 
-    login ,
+const users = {
+    id: ["gah1234", "나개발", "김팀장"],
+    psword: ["1234", "1234", "1234"],
 };
 
-//라우터가 url 통해서 클라이언트가 무언가 자료를 요청하면 기능을 수행하는것은
-//콘트롤러고 즉 여기서 react와 backend가 통신하게된다는 말이다. 
+const output = {
+    home: function (req, res) {
+        res.render("home/index");
+    },
+    login: function (req, res) {
+        res.render("home/login")
+    }
+}
+
+
+const process = {
+    login: function (req, res) {
+        const id = req.body.id,
+            psword = req.body.psword;
+        // 만약 데이터베이스에 iD PW 값과 같다면 ! 클라이언트에게 로그인 성공을 그려줘야한다.
+        if (users.id.includes(id)) {
+            const idx = users.id.indexOf(id);
+            if (users.psword[idx] === psword) {
+                return res.json({
+                    success: "true",
+                });
+            }
+        }
+        return res.json({
+            success: false,
+            msg: "로그인에 실패하셨습니다.",
+        });
+    },
+};
+
+module.exports = {
+    output,
+    process
+};
+
