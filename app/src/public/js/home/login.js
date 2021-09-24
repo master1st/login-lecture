@@ -18,7 +18,16 @@ function login() {
         },
       body : JSON.stringify(req),
     }).then((res) => res.json())
-    .then((res) => console.log(res));
+    .then((res) => {
+        if (res.success) {
+            location.href ="/";
+        } else {
+            alert(res.msg);       
+         }
+    })
+    .catch((err) => {
+        console.error(("로그인 중 에러 발생"));
+    });
 }
  //어떠한 경로로 데이터전달 근데 login 경로는 실제로 
  //백엔드상에 존재하지 않음. 즉 데이터받아줄 api존재없음
