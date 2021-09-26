@@ -9,7 +9,7 @@ class User {
 
     login() {
         const body = this.body;
-        const {id, psword} = Userstorage.getUsers(body.id);
+        const {id, psword} = Userstorage.getUserInfo(body.id);
         
         if (id) {
             if (id === body.id && psword === body.psword) {

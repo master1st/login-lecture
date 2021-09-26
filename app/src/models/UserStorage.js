@@ -27,7 +27,7 @@ static getUserInfo(id) {
     const usersKeys = Object.keys(users);
     const userInfo = usersKeys.reduce((newUser, info) => {
         newUser[info] = users[info][idx];
-        return newUsers;
+        return newUser;
     }, {}); 
     return userInfo;
 }
