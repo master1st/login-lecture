@@ -5,9 +5,12 @@ const output = {
         res.render("home/index");
     },
     login: function (req, res) {
-        res.render("home/login")
+        res.render("home/login");
+    },
+    register: function (req, res) {
+        res.render("home/register");
     }
-}
+};
 
 
 const process = {
