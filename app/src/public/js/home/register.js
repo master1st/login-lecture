@@ -9,12 +9,25 @@ registerBtn = document.querySelector("#button");
 registerBtn.addEventListener('click', register);
 
 function register() {
+    if(res.body.id === id.value){
+        alert("아이디가 중복되었습니다");
+        return;
+    }
+    if(!id.value){
+        alert("아이디를 입력해주세요");
+        return;
+    }
+    if(psword.value !== confirmPsword.value){
+        alert("비밀번호 재확인요청");
+        return;
+    };
     const req = {
         id: id.value,
         name: name.value,
         psword: psword.value,
         confirmPsword: confirmPsword.value,
     };
+
     console.log(req);
     fetch("/register", {          
         method: "POST",     
