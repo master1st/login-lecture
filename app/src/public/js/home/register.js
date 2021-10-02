@@ -1,25 +1,21 @@
 "use strict";
 
 const id = document.querySelector("#id"),
-name = document.querySelector("#name"),
-psword = document.querySelector("#psword"),
-confirmPsword = document.querySelector("#confirm-psword"),
-registerBtn = document.querySelector("#button");
+    name = document.querySelector("#name"),
+    psword = document.querySelector("#psword"),
+    confirmPsword = document.querySelector("#confirm-psword"),
+    registerBtn = document.querySelector("#button");
 
 registerBtn.addEventListener('click', register);
 
 function register() {
-    if(res.body.id === id.value){
-        alert("아이디가 중복되었습니다");
-        return;
+    if (!id.value) {
+        return alert("아이디를 입력해주세요");
+
     }
-    if(!id.value){
-        alert("아이디를 입력해주세요");
-        return;
-    }
-    if(psword.value !== confirmPsword.value){
-        alert("비밀번호 재확인요청");
-        return;
+    if (psword.value !== confirmPsword.value) {
+        return alert("비밀번호 재확인요청");
+
     };
     const req = {
         id: id.value,
@@ -29,24 +25,23 @@ function register() {
     };
 
     console.log(req);
-    fetch("/register", {          
-        method: "POST",     
+    fetch("/register", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-      body : JSON.stringify(req),
+        body: JSON.stringify(req),
     }).then((res) => res.json())
-    .then((res) => {
-        if (res.success) {
-            location.href ="/login";
-        } else {
-            alert(res.msg);       
-         }
-    })
-    .catch((err) => {
-        console.error(("회원가입 중 에러 발생"));
-    });
+        .then((res) => {
+            if (res.success) {
+                location.href = "/login";
+            } else {
+                alert(res.msg);
+            }
+        })
+        .catch((err) => {
+            console.error(("회원가입 중 에러 발생"));
+        });
 }
- //어떠한 경로로 데이터전달 근데 register 경로는 실제로 
+ //어떠한 경로로 데이터전달 근데 register 경로는 실제로
  //백엔드상에 존재하지 않음. 즉 데이터받아줄 api존재없음
- 
