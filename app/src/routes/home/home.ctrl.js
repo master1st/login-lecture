@@ -22,8 +22,8 @@ const output = {
         return res.json(response);
     },
      register: async (req, res) => {
-        const user = await new User(req.body);
-        const response = user.register()
+        const user =  new User(req.body);
+        const response = await user.register()
         return res.json(response);
     },
 };

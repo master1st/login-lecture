@@ -2,7 +2,8 @@
  const express = require("express");
  const app = express();
  const bodyParser = require("body-parser");
-
+ const dotenv = require("dotenv");
+ dotenv.config(); 
 //라우팅
  const home = require('./src/routes/home'); // 주소를 그냥 받아온거다
 
