@@ -16,8 +16,13 @@ router.post('/register', ctrl.process.register);
 
 
 
+
 module.exports = router;
 
-// 간단하다 그냥 module.exports로 빼주고 
-//ctrl 즉 home.ctrl.js 폴더의 hello,login
-//을 명시해준것 뿐이다. 
+// 물품대여 DB c
+// 물품 등록 create 
+// 물품 삭제 delete
+// 물품 대여(수정)U Update
+// 물품 표시 read
+
+

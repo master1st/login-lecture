@@ -9,7 +9,10 @@ const output = {
     },
     register: function (req, res) {
         res.render("home/register");
-    }
+    },
+    userAdminLogin: function (req, res){
+        res.render("home/userAdminLogin");
+    },
 };
 
 // ctrl의 process의 login함수는 로그인을 처리해주는 로직, post방식으로 데이터보내 그것을 body로
@@ -26,8 +29,12 @@ const output = {
         const response = await user.register()
         return res.json(response);
     },
+    rental: async (req,res) => {
+        const prod; 
+    },
 };
-
+// 만들어야 할것은 output에 다가는 db 테이블 정도? , restapi 이용해서 crud 만들고 나면 이후는 딱히없음.
+// api frontend 에서 요청 -> 보내주는 방식으로 배포, 웹서버 통합, aws병합 
         // const id = req.body.id,
         //     psword = req.body.psword;
         //     console.log(UserStorage.getUsers("id", "psword"));

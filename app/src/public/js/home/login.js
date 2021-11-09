@@ -20,7 +20,12 @@ function login() {
     }).then((res) => res.json())
     .then((res) => {
         if (res.success) {
+            if(res.checkadmin == 1){
+                location.href ="/register";
+            }
+            else{
             location.href ="/";
+            }
         } else {
             alert(res.msg);       
          }
